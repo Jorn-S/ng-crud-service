@@ -1,0 +1,32 @@
+{
+  "name": "@jorns/crud-service",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.6",
+    "@angular/core": "^10.1.6",
+    "rxjs": "^6.6.3"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jschalkwijk/ng-crud-service.git"
+  },
+  "keywords": [
+    "angular",
+    "crud",
+    "service"
+  ],
+  "author": "Jorn Schalkwijk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jschalkwijk/ng-crud-service/issues"
+  },
+  "homepage": "https://github.com/jschalkwijk/ng-crud-service#readme"
+}
