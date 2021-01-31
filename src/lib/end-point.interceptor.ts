@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -6,12 +6,11 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CONFIG } from './tokens';
 import { IConfig } from './config.interface';
 
-@Injectable()
 export class EndPointInterceptor implements HttpInterceptor {
-
-  constructor( @Inject('config') public config: IConfig) {}
+  constructor(@Inject(CONFIG) public config: IConfig) {}
 
   /**
    * Intercepts the outgoing request and prepends the api url to the request url.
