@@ -16,32 +16,58 @@ export class CrudService<T> implements ICrud<T>{
 
   constructor(@Inject(HTTP_CLIENT) public http: HttpClient) { }
 
-  create(formData?: FormData, param?: Param): Observable<T> {
+  /**
+   * Returns a POST request response.
+   *
+   * @param formData - (Optional) The data to be posted
+   * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
+   * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
+   *
+   * @public
+   */
+
+  create<K = void>(formData?: FormData, param?: Param): Observable<T|K> {
     return this.http.post<T>(
       this.createUrlTree(param),
       formData
     );
   }
-
+  /**
+   * Returns a GET request response.
+   *
+   * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
+   * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
+   *
+   * @public
+   */
   read(param?: Param): Observable<T>{
     return this.http.get<T>(
       this.createUrlTree(param)
     );
   }
-
-  readList(param?: Param): Observable<T[]>{
-    return this.http.get<T[]>(
-      this.createUrlTree(param)
-    );
-  }
-
+   /**
+   * Returns a PATCH request response.
+   *
+   * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
+   * @param formData - (Optional) The data to be posted
+   * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
+   *
+   * @public
+   */
   update(param: Param, formData?: FormData): Observable<T> {
     return this.http.patch<T>(
       this.createUrlTree(param),
       formData
     );
   }
-
+  /**
+   * Returns a DELETE request response.
+   *
+   * @param param - Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
+   * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
+   *
+   * @public
+   */
   delete(param: Param): Observable<T> {
     return this.http.delete<T>(this.createUrlTree(param));
   }
@@ -50,7 +76,15 @@ export class CrudService<T> implements ICrud<T>{
     return this.http.delete<T>(this.createUrlTree(param));
   }
 
-  createUrlTree(param?: number | string | any[]): string{
+  /**
+   * Returns a string of the given URL paramaters. if non given it will return the specidied resource prefix.
+   *
+   * @param param - Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
+   * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
+   *
+   * @public
+   */
+  private createUrlTree(param?: number | string | any[]): string{
     if(!param || param === ''){
       return '/'+this.resourcePrefix;
     }

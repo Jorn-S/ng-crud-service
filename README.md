@@ -1,6 +1,18 @@
 # CrudService
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+A simple crud service for simple applications.
+
+## Installation
+
+npm install @jorns/ng-crud-service
+
+## Usage
+
+Import IonicHttpErrorToastModule into your AppModule.
+
+### Default settings:
+to Use with the default settings provide an empty object to the forRoot().
+    IonicHttpErrorToastModule.forRoot({}),
 
 ## Code scaffolding
 
