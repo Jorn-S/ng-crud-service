@@ -11,7 +11,7 @@ import { Param } from './types';
   }
 )
 
-export class CrudService<T> implements ICrud<T>{
+export class CrudService implements ICrud {
   public resourcePrefix: string;
 
   constructor(@Inject(HTTP_CLIENT) public http: HttpClient) { }
@@ -26,7 +26,7 @@ export class CrudService<T> implements ICrud<T>{
    * @public
    */
 
-  create<K = void>(formData?: FormData, param?: Param): Observable<T|K> {
+  create<T>(formData?: FormData, param?: Param): Observable<T> {
     return this.http.post<T>(
       this.createUrlTree(param),
       formData
@@ -40,7 +40,7 @@ export class CrudService<T> implements ICrud<T>{
    *
    * @public
    */
-  read(param?: Param): Observable<T>{
+  read<T>(param?: Param): Observable<T>{
     return this.http.get<T>(
       this.createUrlTree(param)
     );
@@ -54,7 +54,7 @@ export class CrudService<T> implements ICrud<T>{
    *
    * @public
    */
-  update(param: Param, formData?: FormData): Observable<T> {
+  update<T>(param: Param, formData?: FormData): Observable<T> {
     return this.http.patch<T>(
       this.createUrlTree(param),
       formData
@@ -68,11 +68,11 @@ export class CrudService<T> implements ICrud<T>{
    *
    * @public
    */
-  delete(param: Param): Observable<T> {
+  delete<T>(param: Param): Observable<T> {
     return this.http.delete<T>(this.createUrlTree(param));
   }
 
-  forceDelete(param: Param): Observable<T> {
+  forceDelete<T>(param: Param): Observable<T> {
     return this.http.delete<T>(this.createUrlTree(param));
   }
 
