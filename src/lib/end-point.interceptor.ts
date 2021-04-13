@@ -19,6 +19,7 @@ export class EndPointInterceptor implements HttpInterceptor {
    * @param {HttpHandler} next
    * @returns {Observable<HttpEvent<unknown>>}
    * @memberof EndPointInterceptor
+   * @public
    */
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const apiRequest = request.clone({ url: this.config.apiUrl + request.url });

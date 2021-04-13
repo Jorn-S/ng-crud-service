@@ -23,6 +23,7 @@ export class CrudService implements ICrud {
    * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
    * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
    *
+   * @memberof CrudService
    * @public
    */
   create<T>(formData?: FormData, param?: Param): Observable<T> {
@@ -38,6 +39,7 @@ export class CrudService implements ICrud {
    * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
    * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
    *
+   * @memberof CrudService
    * @public
    */
   read<T>(param?: Param): Observable<T>{
@@ -46,13 +48,14 @@ export class CrudService implements ICrud {
     );
   }
 
-   /**
+  /**
    * Returns a PATCH request response.
    *
    * @param param - (Optional) Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
    * @param formData - (Optional) The data to be posted
    * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
    *
+   * @memberof CrudService
    * @public
    */
   update<T>(param: Param, formData?: FormData): Observable<T> {
@@ -68,6 +71,7 @@ export class CrudService implements ICrud {
    * @param param - Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
    * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
    *
+   * @memberof CrudService
    * @public
    */
   delete<T>(param: Param): Observable<T> {
@@ -80,6 +84,7 @@ export class CrudService implements ICrud {
    * @param param - Takes the following as URL parameters: number|string|any[]. Single number or string, or array with url parameters.
    * @returns An Observable of the HttpResponse for the request, with a response body in the requested type.
    *
+   * @memberof CrudService
    * @public
    */
   public createUrlTree(param?: number | string | any[]): string{

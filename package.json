@@ -1,6 +1,6 @@
 {
   "name": "@jorns/ng-crud-service",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^10.1.6",
     "@angular/core": "^10.1.6",
@@ -9,7 +9,7 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.",
+  "description": "A simple CRUD service for Angular projects.",
   "main": "karma.conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
