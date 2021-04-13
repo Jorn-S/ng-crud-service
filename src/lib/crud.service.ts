@@ -25,13 +25,13 @@ export class CrudService implements ICrud {
    *
    * @public
    */
-
   create<T>(formData?: FormData, param?: Param): Observable<T> {
     return this.http.post<T>(
       this.createUrlTree(param),
       formData
     );
   }
+
   /**
    * Returns a GET request response.
    *
@@ -45,6 +45,7 @@ export class CrudService implements ICrud {
       this.createUrlTree(param)
     );
   }
+
    /**
    * Returns a PATCH request response.
    *
@@ -60,6 +61,7 @@ export class CrudService implements ICrud {
       formData
     );
   }
+
   /**
    * Returns a DELETE request response.
    *
@@ -72,10 +74,6 @@ export class CrudService implements ICrud {
     return this.http.delete<T>(this.createUrlTree(param));
   }
 
-  forceDelete<T>(param: Param): Observable<T> {
-    return this.http.delete<T>(this.createUrlTree(param));
-  }
-
   /**
    * Returns a string of the given URL paramaters. if non given it will return the specidied resource prefix.
    *
@@ -84,7 +82,7 @@ export class CrudService implements ICrud {
    *
    * @public
    */
-  private createUrlTree(param?: number | string | any[]): string{
+  public createUrlTree(param?: number | string | any[]): string{
     if(!param || param === ''){
       return '/'+this.resourcePrefix;
     }
