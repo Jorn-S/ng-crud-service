@@ -1,5 +1,5 @@
 {
-  "name": "@jorns/crud-service",
+  "name": "@jorns/ng-crud-service",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^10.1.6",

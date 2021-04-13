@@ -8,29 +8,61 @@ npm install @jorns/ng-crud-service
 
 ## Usage
 
-Import IonicHttpErrorToastModule into your AppModule.
+### Creating a service
 
-### Default settings:
-to Use with the default settings provide an empty object to the forRoot().
-    IonicHttpErrorToastModule.forRoot({}),
+Create a service and extend `CrudService`. Provide a resource prefix for your service which will be
+prepended to all your requests made.
+Inject the `HttpClient` to the contructor and provide to the baseclass constructor with `super(http)`.
 
-## Code scaffolding
+    import { HttpClient } from '@angular/common/http';
+    import { Injectable } from '@angular/core';
+    import { CrudService } from '@jorns/crud-service';
 
-Run `ng generate component component-name --project crud-service` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project crud-service`.
-> Note: Don't forget to add `--project crud-service` or else it will be added to the default project in your `angular.json` file. 
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class YourService extends CrudService {
+      public resourcePrefix = 'todo';
 
-## Build
+      constructor(public http: HttpClient) {
+        super(http);
+      }
 
-Run `ng build crud-service` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Using the service
+Now you can import and use your service inside your components. Add the generic Type you expect
+to return from your API. 
 
-## Publishing
+    import { YourService } from 'your.service.ts';
 
-After building your library with `ng build crud-service`, go to the dist folder `cd dist/crud-service` and run `npm publish`.
+    this.myservice.create<Todo>().subscribe();
+    this.myservice.read<Todo[]>().subscribe();
+    this.myservice.update<Todo>().subscribe();
+    this.myservice.delete<Todo>().subscribe();
 
-## Running unit tests
+If the API's response has a different response i.e. 
+    { result: 
+      { todo-object },
+      message: 'Success'
+      status: 200
+    } 
+or an array 
+    { result: [
+        { todo-object },
+        { todo-object },
+        { todo-object },
+      ],
+      message: 'Success'
+      status: 200
+    }
 
-Run `ng test crud-service` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can pass in your own Request class or interface `this.myservice.read<Request<Todo[]>>();`
 
-## Further help
+    interface Request<T> {
+      result: T;
+      status: number;
+      message: string;
+      errors?: null|[];
+    };
+    
+### Adding route parameters
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
