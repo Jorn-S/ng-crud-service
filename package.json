@@ -1,6 +1,15 @@
 {
   "name": "@jorns/ng-crud-service",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "scripts": {
+    "build": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.schematics.json",
+    "copy:schemas": "cp --parents schematics\\/*/\\schema.json ..\\..\\dist\\ng-crud-service\\",
+    "copy:files": "cp --parents -p schematics\\/*/\\files\\/** -r ..\\..\\dist\\ng-crud-service\\",
+    "copy:collection": "cp schematics\\collection.json ..\\..\\dist\\ng-crud-service\\schematics\\collection.json",
+    "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/common": "^10.1.6",
     "@angular/core": "^10.1.6",
@@ -11,9 +20,6 @@
   },
   "description": "A simple CRUD service for Angular projects.",
   "main": "karma.conf.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jschalkwijk/ng-crud-service.git"

@@ -21,6 +21,10 @@ Set the desired url for the API you consume and it will be prefixed on al your r
 
 ### Creating a service
 
+Using a schematic:
+
+    ng generate @jorns/ng-crud-service:crud-service --name YourServiceName --path your/service/path
+
 Create a service and extend `CrudService`. Provide a resource prefix for your service which will be
 prepended to all your requests made.
 Inject the `HttpClient` to the contructor and provide to the baseclass constructor with `super(http)`.
@@ -113,11 +117,12 @@ Of course you can add your own methods to the service you created when basic CRU
     }
 
 Using `createUrlTree(params: Param)`
-   /** 
-    * for example return all todo's which belong to a category of 10, the params value
-    * givin in this case is an `Array`. `['category','5']`.
-    * This method will build up the url including the `resourcePrefix`.
-    */
+    /** 
+     * for example return all todo's which belong to a category of 10, the params value
+     * givin in this case is an `Array`. `['category','5']`.
+     * This method will build up the url including the `resourcePrefix`.
+     */
+     
     otherCustomMethod(params: Param): Observable<IRequest<Todo[]>> {
       return this.http.get<IRequest<Todo[]>>(this.createUrlTree(params));
     }

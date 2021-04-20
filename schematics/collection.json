@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "crud-service": {
+      "description": "Generates a new service with CRUD functionality",
+      "factory": "./crud-service/index#CrudService",
+      "schema": "./crud-service/schema.json"
+    }
+  }
+}

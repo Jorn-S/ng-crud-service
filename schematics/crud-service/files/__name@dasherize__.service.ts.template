@@ -1,0 +1,12 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CrudService } from '@jorns/ng-crud-service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class <%= classify(name) %>Service extends CrudService {
+  constructor(public http: HttpClient) {
+    super(http)
+  }
+}
