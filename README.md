@@ -4,7 +4,7 @@ A simple crud service for simple Angular applications.
 
 ## Installation
 
-npm install @jorns/ng-crud-service
+    npm install @jorns/ng-crud-service
 
 ## Usage
 
@@ -21,9 +21,11 @@ Set the desired url for the API you consume and it will be prefixed on al your r
 
 ### Creating a service
 
-Using a schematic:
+#### Using a schematic:
 
     ng generate @jorns/ng-crud-service:crud-service --name YourServiceName --path your/service/path
+
+#### Custom: 
 
 Create a service and extend `CrudService`. Provide a resource prefix for your service which will be
 prepended to all your requests made.

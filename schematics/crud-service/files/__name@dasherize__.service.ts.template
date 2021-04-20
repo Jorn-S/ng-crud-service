@@ -7,6 +7,6 @@ import { CrudService } from '@jorns/ng-crud-service';
 })
 export class <%= classify(name) %>Service extends CrudService {
   constructor(public http: HttpClient) {
-    super(http)
+    super(http);
   }
 }
